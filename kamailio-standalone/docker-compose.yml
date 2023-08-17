@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  debian-bookworm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: debian-bookworm-container
+    command: ["bash", "-c", "while true; do sleep 1000; done"]
+    ports:
+      - "5060:5060/tcp"
+      - "5060:5060/udp"
+    volumes:
+      - kamailio-config:/usr/local/etc/kamailio/
+
+volumes:
+  kamailio-config:
